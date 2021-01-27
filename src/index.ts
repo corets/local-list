@@ -1,1 +1,2 @@
-export * from "./createLocalList"
+export * from "./types"
+export * from "./createLocalStorageList"

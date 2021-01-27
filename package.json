@@ -1,5 +1,6 @@
 {
   "name": "@corets/local-storage-list",
+  "description": "localStorage integration of the @corets/list package",
   "version": "0.0.1-2",
   "author": "Maxim Kott",
   "license": "MIT",
@@ -16,12 +17,14 @@
     "/dist"
   ],
   "repository": "github:corets/local-storage-list",
+  "homepage": "https://corets.github.io/local-storage-list",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
   "scripts": {
     "test": "jest",
+    "coverage": "jest --coverage && echo '\nOpen \"coverage/lcov-report/index.html\" in your browser\n'",
     "lint": "tsc --noEmit",
     "format": "prettier --write .",
     "build": "rm -rf dist && microbundle --entry src/index.ts --target web --format cjs,es",
@@ -29,7 +32,7 @@
     "devrelease": "np prerelease --no-release-draft --tag dev"
   },
   "dependencies": {
-    "@corets/list": "^0.0.1-4",
+    "@corets/list": "^0.0.1-5",
     "@corets/local-storage-helpers": "^0.0.1-2"
   },
   "devDependencies": {

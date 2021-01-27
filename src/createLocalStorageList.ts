@@ -3,17 +3,18 @@ import {
   readLocalStorage,
   writeLocalStorage,
 } from "@corets/local-storage-helpers"
+import { CreateLocalStorageList } from "./types"
 
 const cache: Record<string, ObservableList> = {}
 
-export const createLocalList = <TState>(
-  storageKey: string,
-  initialState: TState[]
-): ObservableList<TState> => {
-  let value = cache[storageKey] as ObservableList<TState>
+export const createLocalStorageList: CreateLocalStorageList = <TValue>(
+  storageKey,
+  initialValue
+) => {
+  let value = cache[storageKey] as ObservableList<TValue>
 
   if (!value) {
-    value = createList(readLocalStorage(storageKey, initialState) as TState[])
+    value = createList(readLocalStorage(storageKey, initialValue) as TValue[])
     value.listen((state) => writeLocalStorage(storageKey, state))
     cache[storageKey] = value
   }
