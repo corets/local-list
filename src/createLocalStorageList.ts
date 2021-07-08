@@ -15,7 +15,9 @@ export const createLocalStorageList: CreateLocalStorageList = <TValue>(
 
   if (!value) {
     value = createList(readLocalStorage(storageKey, initialValue) as TValue[])
-    value.listen((state) => writeLocalStorage(storageKey, state))
+    value.listen((state) => writeLocalStorage(storageKey, state), {
+      immediate: true,
+    })
     cache[storageKey] = value
   }
 
